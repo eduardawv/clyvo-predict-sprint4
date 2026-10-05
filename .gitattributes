@@ -1,0 +1,8 @@
+/mvnw text eol=lf
+*.cmd text eol=crlf
+# Scripts e pipelines rodam em Linux/Git Bash: sempre LF, mesmo com clone no Windows
+*.sh   text eol=lf
+*.sql  text eol=lf
+*.json text eol=lf
+*.pem  text eol=lf
+*.yml  text eol=lf

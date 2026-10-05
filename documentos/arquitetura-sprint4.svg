@@ -1,0 +1,378 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+<defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0078D4"/>
+    </marker>
+    <marker id="arrIndigo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3949AB"/>
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7B1FA2"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+
+    <!-- ===== Icones (48x48) ===== -->
+    <g id="i-webapp">
+      <rect width="48" height="48" rx="10" fill="#0078D4"/>
+      <circle cx="24" cy="24" r="13" fill="none" stroke="#fff" stroke-width="2.4"/>
+      <ellipse cx="24" cy="24" rx="5.5" ry="13" fill="none" stroke="#fff" stroke-width="2"/>
+      <line x1="11" y1="24" x2="37" y2="24" stroke="#fff" stroke-width="2"/>
+      <line x1="13.5" y1="17" x2="34.5" y2="17" stroke="#fff" stroke-width="1.6"/>
+      <line x1="13.5" y1="31" x2="34.5" y2="31" stroke="#fff" stroke-width="1.6"/>
+    </g>
+    <g id="i-plan">
+      <rect width="48" height="48" rx="10" fill="#50A0E6"/>
+      <rect x="10" y="10" width="12" height="12" rx="2" fill="#fff"/>
+      <rect x="26" y="10" width="12" height="12" rx="2" fill="#fff" opacity="0.85"/>
+      <rect x="10" y="26" width="12" height="12" rx="2" fill="#fff" opacity="0.85"/>
+      <rect x="26" y="26" width="12" height="12" rx="2" fill="#fff" opacity="0.6"/>
+    </g>
+    <g id="i-sqldb">
+      <path d="M8 12 v24 c0 4.4 7.2 8 16 8 s16-3.6 16-8 V12" fill="#0072C6"/>
+      <ellipse cx="24" cy="12" rx="16" ry="7" fill="#5EA0EF"/>
+      <text x="24" y="34" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">SQL</text>
+    </g>
+    <g id="i-sqlserver">
+      <rect x="6" y="6" width="36" height="11" rx="3" fill="#3949AB"/>
+      <rect x="6" y="19" width="36" height="11" rx="3" fill="#3F51B5"/>
+      <rect x="6" y="32" width="36" height="11" rx="3" fill="#5C6BC0"/>
+      <circle cx="35" cy="11.5" r="2" fill="#B3E5FC"/><circle cx="35" cy="24.5" r="2" fill="#B3E5FC"/><circle cx="35" cy="37.5" r="2" fill="#B3E5FC"/>
+      <rect x="11" y="10" width="14" height="3" rx="1.5" fill="#C5CAE9"/><rect x="11" y="23" width="14" height="3" rx="1.5" fill="#C5CAE9"/><rect x="11" y="36" width="14" height="3" rx="1.5" fill="#C5CAE9"/>
+    </g>
+    <g id="i-insights">
+      <circle cx="24" cy="20" r="14" fill="#8E44AD"/>
+      <path d="M17 33 h14 v5 a3 3 0 0 1 -3 3 h-8 a3 3 0 0 1 -3 -3z" fill="#6C3483"/>
+      <path d="M18 22 l4 -6 l4 8 l4 -5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="i-logs">
+      <rect width="48" height="48" rx="10" fill="#1E88E5"/>
+      <rect x="11" y="26" width="6" height="12" rx="1.5" fill="#fff"/>
+      <rect x="21" y="18" width="6" height="20" rx="1.5" fill="#fff"/>
+      <rect x="31" y="11" width="6" height="27" rx="1.5" fill="#fff"/>
+    </g>
+    <g id="i-key">
+      <circle cx="17" cy="24" r="10" fill="#F59E0B"/>
+      <circle cx="17" cy="24" r="4" fill="#FFFBEB"/>
+      <rect x="25" y="21" width="18" height="6" rx="2" fill="#F59E0B"/>
+      <rect x="35" y="27" width="4" height="7" rx="1" fill="#F59E0B"/>
+      <rect x="29" y="27" width="4" height="5" rx="1" fill="#F59E0B"/>
+    </g>
+    <g id="i-laptop">
+      <rect x="7" y="8" width="34" height="23" rx="3" fill="#1F2937"/>
+      <rect x="10" y="11" width="28" height="17" rx="1.5" fill="#0B1220"/>
+      <path d="M13 16 l4 3 l-4 3" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="19" y="21" width="9" height="2" rx="1" fill="#22C55E"/>
+      <path d="M3 34 h42 l-3 5 h-36z" fill="#4B5563"/>
+    </g>
+    <g id="i-github">
+      <circle cx="24" cy="24" r="21" fill="#24292F"/>
+      <circle cx="17" cy="15" r="3.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+      <circle cx="17" cy="33" r="3.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+      <circle cx="31" cy="19" r="3.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+      <path d="M17 18.5 v11 M31 22.5 c0 6 -14 3 -14 7" fill="none" stroke="#fff" stroke-width="2.4"/>
+    </g>
+    <g id="i-user">
+      <circle cx="24" cy="24" r="21" fill="#E2E8F0"/>
+      <circle cx="24" cy="18" r="7" fill="#475569"/>
+      <path d="M11 37 c2 -8 8 -11 13 -11 s11 3 13 11" fill="#475569"/>
+    </g>
+    <g id="i-dbterm">
+      <rect x="4" y="6" width="40" height="36" rx="5" fill="#0B1220"/>
+      <rect x="4" y="6" width="40" height="7" rx="3" fill="#334155"/>
+      <path d="M10 20 l4 3 l-4 3" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="17" y="27" font-size="8" font-weight="700" fill="#FBBF24" font-family="DejaVu Sans Mono, monospace">SELECT</text>
+      <rect x="10" y="31" width="26" height="2" rx="1" fill="#64748B"/>
+      <rect x="10" y="35" width="18" height="2" rx="1" fill="#64748B"/>
+    </g>
+    <g id="i-rg">
+      <path d="M10 6 h-4 v36 h4 M38 6 h4 v36 h-4" fill="none" stroke="#0078D4" stroke-width="3"/>
+      <path d="M24 10 l11 6 v13 l-11 6 l-11 -6 v-13z" fill="#7FBAEA"/>
+      <path d="M24 10 l11 6 l-11 6 l-11 -6z" fill="#B9DBF7"/>
+      <path d="M24 22 v13 l11 -6 v-13z" fill="#4A9BDF"/>
+    </g>
+    <g id="i-azure">
+      <path d="M17 6 h11 L16 42 H5z" fill="#0078D4"/>
+      <path d="M30 14 L43 42 H20 l8 -6 h-7z" fill="#50A0E6"/>
+    </g>
+  
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E7C3A"/></marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/></marker>
+    <g id="i-devops">
+      <rect width="48" height="48" rx="10" fill="#0078D4"/>
+      <path d="M10 17 l14 -8 v8 l12 -3 v20 l-12 -3 v8 l-14 -8 l14 3 v-17z" fill="#fff"/>
+    </g>
+    <g id="i-pipeline">
+      <rect width="48" height="48" rx="10" fill="#1D4ED8"/>
+      <circle cx="12" cy="24" r="5" fill="#fff"/><circle cx="36" cy="14" r="5" fill="#fff"/><circle cx="36" cy="34" r="5" fill="#fff"/>
+      <path d="M17 24 h6 l8 -10 M23 24 l8 10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="i-artifact">
+      <path d="M24 5 l17 9 v20 l-17 9 l-17 -9 v-20z" fill="#0E7C3A"/>
+      <path d="M24 5 l17 9 l-17 9 l-17 -9z" fill="#34D399"/>
+      <path d="M24 23 v20" stroke="#065F46" stroke-width="2"/>
+      <text x="31" y="35" font-size="8" font-weight="800" fill="#ECFDF5" text-anchor="middle">JAR</text>
+    </g>
+    <g id="i-lock">
+      <rect x="3" y="9" width="14" height="11" rx="2" fill="#B45309"/>
+      <path d="M6 9 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="#B45309" stroke-width="2.4"/>
+      <circle cx="10" cy="14.5" r="1.8" fill="#FEF3C7"/>
+    </g>
+    <g id="i-library">
+      <rect width="48" height="48" rx="10" fill="#F59E0B"/>
+      <rect x="10" y="11" width="7" height="26" rx="1.5" fill="#fff"/><rect x="20" y="11" width="7" height="26" rx="1.5" fill="#FFFBEB"/>
+      <rect x="29" y="13" width="7" height="24" rx="1.5" fill="#fff" transform="rotate(-12 32 25)"/>
+    </g>
+    <g id="i-plug">
+      <rect width="48" height="48" rx="10" fill="#0F766E"/>
+      <rect x="16" y="18" width="16" height="13" rx="3" fill="#fff"/>
+      <rect x="19" y="10" width="3" height="9" rx="1" fill="#fff"/><rect x="26" y="10" width="3" height="9" rx="1" fill="#fff"/>
+      <path d="M24 31 v8" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="i-agent">
+      <rect width="48" height="48" rx="10" fill="#475569"/>
+      <rect x="10" y="14" width="28" height="20" rx="4" fill="#fff"/>
+      <circle cx="19" cy="24" r="3" fill="#475569"/><circle cx="29" cy="24" r="3" fill="#475569"/>
+      <rect x="22" y="8" width="4" height="6" rx="1" fill="#fff"/><rect x="16" y="35" width="16" height="4" rx="1" fill="#fff"/>
+    </g>
+    <g id="i-prof">
+      <circle cx="24" cy="24" r="21" fill="#EDE9FE"/>
+      <circle cx="24" cy="19" r="7" fill="#6D28D9"/>
+      <path d="M11 38 c2 -8 8 -11 13 -11 s11 3 13 11" fill="#6D28D9"/>
+      <path d="M14 11 l10 -5 l10 5 l-10 5z" fill="#4C1D95"/>
+    </g>
+</defs>
+<rect width="1600" height="1040" fill="#F8FAFC"/>
+<text x="30" y="46" font-size="27" font-weight="800" fill="#0F172A" text-anchor="start">CLYVO Predict · Sprint 4 — Arquitetura da solução e esteira CI/CD</text>
+<text x="30" y="74" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Java 21 + Spring Boot 3.5 · GitHub · Azure DevOps (Pipelines CI/CD, Library) · Azure Web App · Azure SQL Database (PaaS)</text>
+<g filter="url(#sh)"><rect x="30" y="105" width="270" height="150" rx="14" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/></g>
+<use href="#i-laptop" x="46" y="121"/>
+<text x="106" y="142" font-size="16" font-weight="700" fill="#0F172A" text-anchor="start">Desenvolvedor</text>
+<text x="106" y="163" font-size="13" font-weight="400" fill="#475569" text-anchor="start">equipe CLYVO</text>
+<text x="48" y="195" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• IntelliJ / VS Code + Git</text>
+<text x="48" y="215" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• altera o código e faz push</text>
+<text x="48" y="235" font-size="13" font-weight="400" fill="#334155" text-anchor="start">  na branch master</text>
+<rect x="30" y="285" width="270" height="215" rx="12" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="46" y="309" font-size="14" font-weight="800" fill="#0F172A" text-anchor="start">Legenda</text>
+<rect x="46" y="322" width="14" height="14" rx="3" fill="#1D4ED8"/>
+<text x="68" y="334" font-size="12" font-weight="400" fill="#334155" text-anchor="start">CI (build e testes)</text>
+<rect x="46" y="346" width="14" height="14" rx="3" fill="#0E7C3A"/>
+<text x="68" y="358" font-size="12" font-weight="400" fill="#334155" text-anchor="start">Artefato e CD (deploy)</text>
+<rect x="46" y="370" width="14" height="14" rx="3" fill="#B45309"/>
+<text x="68" y="382" font-size="12" font-weight="400" fill="#334155" text-anchor="start">Dados protegidos (Library)</text>
+<rect x="46" y="394" width="14" height="14" rx="3" fill="#0078D4"/>
+<text x="68" y="406" font-size="12" font-weight="400" fill="#334155" text-anchor="start">Computação / HTTPS</text>
+<rect x="46" y="418" width="14" height="14" rx="3" fill="#3949AB"/>
+<text x="68" y="430" font-size="12" font-weight="400" fill="#334155" text-anchor="start">Banco de dados (PaaS)</text>
+<rect x="46" y="442" width="14" height="14" rx="3" fill="#6D28D9"/>
+<text x="68" y="454" font-size="12" font-weight="400" fill="#334155" text-anchor="start">Persona</text>
+<circle cx="54" cy="476" r="12.5" fill="#DC2626" stroke="#fff" stroke-width="2"/>
+<text x="54" y="480.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">n</text>
+<text x="74" y="481" font-size="12" font-weight="400" fill="#334155" text-anchor="start">ordem do fluxo CI/CD</text>
+<g filter="url(#sh)"><rect x="30" y="530" width="270" height="140" rx="14" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/></g>
+<use href="#i-prof" x="46" y="546"/>
+<text x="106" y="567" font-size="16" font-weight="700" fill="#0F172A" text-anchor="start">Professor</text>
+<text x="106" y="588" font-size="13" font-weight="400" fill="#475569" text-anchor="start">avaliador · acesso Basic</text>
+<text x="48" y="620" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• acompanha Repos, Pipelines,</text>
+<text x="48" y="640" font-size="13" font-weight="400" fill="#334155" text-anchor="start">  testes e artefatos no</text>
+<text x="48" y="660" font-size="13" font-weight="400" fill="#334155" text-anchor="start">  Azure DevOps</text>
+<g filter="url(#sh)"><rect x="30" y="700" width="270" height="150" rx="14" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/></g>
+<use href="#i-dbterm" x="46" y="716"/>
+<text x="106" y="737" font-size="16" font-weight="700" fill="#0F172A" text-anchor="start">Equipe (evidências)</text>
+<text x="106" y="758" font-size="13" font-weight="400" fill="#475569" text-anchor="start">terminal do banco</text>
+<text x="48" y="790" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• scripts/db-terminal.sh (sqlcmd)</text>
+<text x="48" y="810" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• SELECT após cada operação</text>
+<text x="48" y="830" font-size="13" font-weight="400" fill="#334155" text-anchor="start">  do CRUD</text>
+<g filter="url(#sh)"><rect x="340" y="105" width="300" height="120" rx="14" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/></g>
+<use href="#i-github" x="356" y="121"/>
+<text x="416" y="142" font-size="16" font-weight="700" fill="#0F172A" text-anchor="start">GitHub</text>
+<text x="416" y="163" font-size="13" font-weight="400" fill="#475569" text-anchor="start">repositório da aplicação</text>
+<text x="358" y="195" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• branch master · YAML das pipelines</text>
+<text x="358" y="215" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• código Java, testes, scripts</text>
+<g filter="url(#sh)"><rect x="1290" y="100" width="280" height="118" rx="14" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/></g>
+<use href="#i-user" x="1306" y="116"/>
+<text x="1366" y="137" font-size="16" font-weight="700" fill="#0F172A" text-anchor="start">Usuário final</text>
+<text x="1366" y="158" font-size="13" font-weight="400" fill="#475569" text-anchor="start">tutor / clínica veterinária</text>
+<text x="1308" y="190" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• app mobile, Swagger ou REST</text>
+<text x="1308" y="208" font-size="13" font-weight="400" fill="#334155" text-anchor="start">• login → token JWT → CRUD</text>
+<rect x="330" y="250" width="690" height="610" rx="20" fill="#EEF2FF" stroke="#818CF8" stroke-width="2"/>
+<g transform="translate(648 258) scale(0.75)"><use href="#i-devops"/></g>
+<text x="690" y="280" font-size="17" font-weight="800" fill="#312E81" text-anchor="start">Azure DevOps</text>
+<text x="690" y="299" font-size="12" font-weight="400" fill="#3730A3" text-anchor="start">projeto “Sprint 4 – Azure DevOps” · privado · Git · Scrum</text>
+<g filter="url(#sh)"><rect x="350" y="310" width="315" height="345" rx="14" fill="#fff" stroke="#1D4ED8" stroke-width="1.8"/></g>
+<g transform="translate(366 324) scale(0.8)"><use href="#i-pipeline"/></g>
+<text x="410" y="343" font-size="16" font-weight="800" fill="#1E3A8A" text-anchor="start">Pipeline CI</text>
+<text x="410" y="362" font-size="12" font-weight="400" fill="#1D4ED8" text-anchor="start" font-family="DejaVu Sans Mono, monospace">CI-clyvo-predict</text>
+<text x="366" y="392" font-size="12.5" font-weight="700" fill="#1E40AF" text-anchor="start">Disparo: todo push na branch master</text>
+<text x="372" y="420" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">1. Checkout do código (GitHub)</text>
+<text x="372" y="445" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">2. JDK 21 + Maven · cache de dependências</text>
+<text x="372" y="470" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">3. Chave JWT do Secure File (validada)</text>
+<text x="372" y="495" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">4. Build: mvn compile</text>
+<text x="372" y="520" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">5. Testes automatizados JUnit 5 + Mockito</text>
+<text x="372" y="545" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">6. Publica resultados dos testes</text>
+<text x="372" y="570" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">7. Empacota a aplicação (JAR)</text>
+<text x="372" y="595" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">8. Publica o artefato drop/app.jar</text>
+<circle cx="640" cy="490" r="12.5" fill="#1D4ED8" stroke="#fff" stroke-width="2"/>
+<text x="640" y="494.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<circle cx="640" cy="515" r="12.5" fill="#1D4ED8" stroke="#fff" stroke-width="2"/>
+<text x="640" y="519.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+<circle cx="640" cy="590" r="12.5" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="640" y="594.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">5</text>
+<rect x="366" y="612" width="282" height="32" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.4"/>
+<g transform="translate(370 614) scale(0.58)"><use href="#i-artifact"/></g>
+<text x="400" y="633" font-size="13" font-weight="800" fill="#065F46" text-anchor="start">Artefato: drop/app.jar</text>
+<g filter="url(#sh)"><rect x="690" y="310" width="310" height="345" rx="14" fill="#fff" stroke="#0E7C3A" stroke-width="1.8"/></g>
+<g transform="translate(706 324) scale(0.8)"><use href="#i-pipeline"/></g>
+<text x="750" y="343" font-size="16" font-weight="800" fill="#14532D" text-anchor="start">Pipeline CD</text>
+<text x="750" y="362" font-size="12" font-weight="400" fill="#0E7C3A" text-anchor="start" font-family="DejaVu Sans Mono, monospace">CD-clyvo-predict</text>
+<text x="706" y="392" font-size="12.5" font-weight="700" fill="#166534" text-anchor="start">Disparo: novo artefato gerado pelo CI</text>
+<text x="712" y="420" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">1. Baixa o artefato drop/app.jar</text>
+<text x="712" y="445" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">2. Confere o artefato (run, commit)</text>
+<text x="712" y="470" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">3. App Settings do Web App com</text>
+<text x="712" y="495" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">    os segredos do Library</text>
+<text x="712" y="520" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">4. Deploy do JAR no Azure Web App</text>
+<text x="712" y="545" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">5. Teste de fumaça: API responde 200</text>
+<circle cx="980" cy="465" r="12.5" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="980" y="469.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">7</text>
+<circle cx="980" cy="515" r="12.5" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="980" y="519.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">8</text>
+<text x="706" y="590" font-size="12" font-weight="700" fill="#14532D" text-anchor="start">Sem dados sensíveis no YAML:</text>
+<text x="706" y="608" font-size="12" font-weight="400" fill="#14532D" text-anchor="start">valores vêm do grupo de variáveis</text>
+<text x="706" y="626" font-size="12" font-weight="400" fill="#14532D" text-anchor="start">e da service connection</text>
+<g filter="url(#sh)"><rect x="350" y="680" width="315" height="165" rx="14" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.6"/></g>
+<g transform="translate(366 694) scale(0.75)"><use href="#i-library"/></g>
+<text x="408" y="716" font-size="15" font-weight="800" fill="#92400E" text-anchor="start">Library · dados protegidos</text>
+<text x="366" y="746" font-size="12.5" font-weight="700" fill="#78350F" text-anchor="start">Variable group clyvo-sprint4</text>
+<text x="372" y="766" font-size="11.5" font-weight="400" fill="#78350F" text-anchor="start" font-family="DejaVu Sans Mono, monospace">RESOURCE_GROUP · WEB_APP_NAME · DB_URL</text>
+<use href="#i-lock" x="370" y="772"/>
+<text x="394" y="788" font-size="11.5" font-weight="700" fill="#78350F" text-anchor="start" font-family="DejaVu Sans Mono, monospace">DB_USER (secreta)</text>
+<use href="#i-lock" x="530" y="772"/>
+<text x="554" y="788" font-size="11.5" font-weight="700" fill="#78350F" text-anchor="start" font-family="DejaVu Sans Mono, monospace">DB_PASSWORD</text>
+<text x="366" y="816" font-size="12.5" font-weight="700" fill="#78350F" text-anchor="start">Secure file</text>
+<use href="#i-lock" x="450" y="802"/>
+<text x="474" y="816" font-size="11.5" font-weight="700" fill="#78350F" text-anchor="start" font-family="DejaVu Sans Mono, monospace">private_key.pem (JWT)</text>
+<text x="366" y="836" font-size="11.5" font-weight="400" fill="#92400E" text-anchor="start">Valores ocultos nos logs (***)</text>
+<g filter="url(#sh)"><rect x="690" y="680" width="310" height="78" rx="14" fill="#F0FDFA" stroke="#14B8A6" stroke-width="1.6"/></g>
+<g transform="translate(704 693) scale(0.75)"><use href="#i-plug"/></g>
+<text x="746" y="713" font-size="15" font-weight="800" fill="#115E59" text-anchor="start">Service connection</text>
+<text x="746" y="733" font-size="12" font-weight="400" fill="#0F766E" text-anchor="start">sc-azure-clyvo (Azure Resource</text>
+<text x="746" y="750" font-size="12" font-weight="400" fill="#0F766E" text-anchor="start">Manager) · escopo rg-clyvo-sprint4</text>
+<g filter="url(#sh)"><rect x="690" y="770" width="310" height="75" rx="14" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.4"/></g>
+<g transform="translate(704 782) scale(0.75)"><use href="#i-agent"/></g>
+<text x="746" y="802" font-size="15" font-weight="800" fill="#334155" text-anchor="start">Agente de build</text>
+<text x="746" y="821" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Microsoft-hosted ubuntu-24.04</text>
+<text x="746" y="838" font-size="12" font-weight="400" fill="#475569" text-anchor="start">(plano B: VM própria, pool Default)</text>
+<rect x="1040" y="240" width="530" height="620" rx="20" fill="#EFF6FF" stroke="#93C5FD" stroke-width="2"/>
+<g transform="translate(1056 252) scale(0.7)"><use href="#i-azure"/></g>
+<text x="1094" y="278" font-size="17" font-weight="800" fill="#0C4A6E" text-anchor="start">Microsoft Azure</text>
+<text x="1240" y="278" font-size="13" font-weight="700" fill="#0369A1" text-anchor="start" font-family="DejaVu Sans Mono, monospace">rg-clyvo-sprint4</text>
+<rect x="1058" y="300" width="494" height="270" rx="14" fill="#E3F2FD" stroke="#64B5F6" stroke-width="1.2"/>
+<g transform="translate(1072 310) scale(0.6)"><use href="#i-plan"/></g>
+<text x="1108" y="330" font-size="13.5" font-weight="700" fill="#0D47A1" text-anchor="start">App Service Plan · B1 Linux</text>
+<g filter="url(#sh)"><rect x="1074" y="346" width="462" height="210" rx="12" fill="#fff" stroke="#1565C0" stroke-width="1.6"/></g>
+<use href="#i-webapp" x="1090" y="360"/>
+<text x="1150" y="380" font-size="17" font-weight="800" fill="#0D47A1" text-anchor="start">Azure Web App</text>
+<text x="1150" y="400" font-size="12.5" font-weight="400" fill="#1E3A8A" text-anchor="start" font-family="DejaVu Sans Mono, monospace">clyvo-sprint4-rm564434</text>
+<text x="1092" y="432" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">• Java 21 · Spring Boot 3.5 · API REST</text>
+<text x="1092" y="454" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">• Spring Security · JWT (RSA) · BCrypt</text>
+<text x="1092" y="476" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">• App Settings: SPRING_PROFILES_ACTIVE,</text>
+<text x="1092" y="498" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">  SPRING_DATASOURCE_* (do Library)</text>
+<text x="1092" y="520" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">• HTTPS obrigatório · TLS 1.2 · Swagger</text>
+<rect x="1058" y="640" width="494" height="205" rx="14" fill="#E8EAF6" stroke="#7986CB" stroke-width="1.2"/>
+<g transform="translate(1072 650) scale(0.6)"><use href="#i-sqlserver"/></g>
+<text x="1108" y="670" font-size="13.5" font-weight="700" fill="#1A237E" text-anchor="start">Azure SQL Server · TLS 1.2 · firewall</text>
+<g filter="url(#sh)"><rect x="1074" y="684" width="462" height="148" rx="12" fill="#fff" stroke="#3949AB" stroke-width="1.6"/></g>
+<use href="#i-sqldb" x="1090" y="696"/>
+<text x="1150" y="716" font-size="17" font-weight="800" fill="#1A237E" text-anchor="start">Azure SQL Database</text>
+<text x="1150" y="736" font-size="12.5" font-weight="400" fill="#283593" text-anchor="start">clyvodb · Basic (PaaS) · Flyway</text>
+<rect x="1092" y="758" width="104" height="30" rx="8" fill="#E8EAF6" stroke="#3949AB" stroke-width="1.2"/>
+<text x="1144.0" y="778" font-size="12.5" font-weight="700" fill="#1A237E" text-anchor="middle">tb_tutor</text>
+<rect x="1222" y="758" width="90" height="30" rx="8" fill="#E8EAF6" stroke="#3949AB" stroke-width="1.2"/>
+<text x="1267.0" y="778" font-size="12.5" font-weight="700" fill="#1A237E" text-anchor="middle">tb_pet</text>
+<rect x="1338" y="758" width="140" height="30" rx="8" fill="#F1F5F9" stroke="#3949AB" stroke-width="1.2"/>
+<text x="1408.0" y="778" font-size="12.5" font-weight="700" fill="#1A237E" text-anchor="middle">tb_evento_saude</text>
+<path d="M1196 773 H1220" stroke="#3949AB" stroke-width="2" fill="none" marker-end="url(#arrIndigo)"/>
+<path d="M1312 773 H1336" stroke="#3949AB" stroke-width="2" fill="none" marker-end="url(#arrIndigo)"/>
+<text x="1092" y="815" font-size="12" font-weight="400" fill="#475569" text-anchor="start">tb_veterinario · flyway_schema_history</text>
+<path d="M300 165 H338" stroke="#334155" stroke-width="2.2" fill="none" marker-end="url(#arr)"/>
+<circle cx="319" cy="150" r="12.5" fill="#DC2626" stroke="#fff" stroke-width="2"/>
+<text x="319" y="154.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="306" y="128" font-size="12" font-weight="700" fill="#334155" text-anchor="start">git push</text>
+<path d="M490 225 V308" stroke="#1D4ED8" stroke-width="2.2" fill="none" marker-end="url(#arrBlue)"/>
+<circle cx="490" cy="262" r="12.5" fill="#1D4ED8" stroke="#fff" stroke-width="2"/>
+<text x="490" y="266.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="507" y="300" font-size="12" font-weight="700" fill="#1D4ED8" text-anchor="start">webhook dispara o CI</text>
+<path d="M665 480 H688" stroke="#0E7C3A" stroke-width="2.6" fill="none" marker-end="url(#arrGreen)"/>
+<circle cx="677" cy="455" r="12.5" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="677" y="459.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">6</text>
+<path d="M500 680 V657" stroke="#B45309" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#arrAmber)"/>
+<text x="508" y="672" font-size="11" font-weight="700" fill="#B45309" text-anchor="start">chave JWT</text>
+<path d="M665 712 H678 V668 H720 V658" stroke="#B45309" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#arrAmber)"/>
+<text x="726" y="672" font-size="11" font-weight="700" fill="#B45309" text-anchor="start">segredos DB_*</text>
+<path d="M1000 500 H1072" stroke="#0E7C3A" stroke-width="2.6" fill="none" marker-end="url(#arrGreen)"/>
+<text x="1006" y="490" font-size="12" font-weight="700" fill="#0E7C3A" text-anchor="start">deploy</text>
+<path d="M1000 718 H1022 V545 H1072" stroke="#0F766E" stroke-width="1.8" fill="none" stroke-dasharray="6 4" marker-end="url(#arrTeal)"/>
+<path d="M1430 218 V344" stroke="#0078D4" stroke-width="2.2" fill="none" marker-end="url(#arrBlue)"/>
+<circle cx="1430" cy="300" r="12.5" fill="#0078D4" stroke="#fff" stroke-width="2"/>
+<text x="1430" y="304.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">10</text>
+<text x="1446" y="258" font-size="12" font-weight="700" fill="#0078D4" text-anchor="start">HTTPS 443</text>
+<text x="1446" y="274" font-size="11" font-weight="400" fill="#0078D4" text-anchor="start">Bearer JWT</text>
+<path d="M1505 556 V682" stroke="#3949AB" stroke-width="2.6" fill="none" marker-end="url(#arrIndigo)"/>
+<circle cx="1505" cy="592" r="12.5" fill="#3949AB" stroke="#fff" stroke-width="2"/>
+<text x="1505" y="596.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">9</text>
+<text x="1488" y="597" font-size="12" font-weight="700" fill="#3949AB" text-anchor="end">Flyway cria as tabelas no start</text>
+<circle cx="1505" cy="622" r="12.5" fill="#3949AB" stroke="#fff" stroke-width="2"/>
+<text x="1505" y="626.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">11</text>
+<text x="1488" y="627" font-size="12" font-weight="700" fill="#3949AB" text-anchor="end">API grava/lê: JDBC TLS 1433</text>
+<path d="M300 595 H328" stroke="#6D28D9" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<text x="305" y="585" font-size="11" font-weight="700" fill="#6D28D9" text-anchor="start">Basic</text>
+<path d="M300 775 H316 V890 H1305 V847" stroke="#3949AB" stroke-width="2.2" fill="none" marker-end="url(#arrIndigo)"/>
+<circle cx="800" cy="890" r="12.5" fill="#3949AB" stroke="#fff" stroke-width="2"/>
+<text x="800" y="894.44" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">12</text>
+<text x="820" y="912" font-size="12.5" font-weight="700" fill="#3949AB" text-anchor="start">SELECT no banco: evidência de cada operação do CRUD (sqlcmd · TDS 1433 · IP liberado)</text>
+<rect x="30" y="935" width="1540" height="92" rx="12" fill="#fff" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="46" y="958" font-size="14" font-weight="800" fill="#0F172A" text-anchor="start">Fluxo CI/CD</text>
+<circle cx="56" cy="976" r="10" fill="#DC2626" stroke="#fff" stroke-width="2"/>
+<text x="56" y="979.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="72" y="981" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">push na master (GitHub)</text>
+<circle cx="308" cy="976" r="10" fill="#1D4ED8" stroke="#fff" stroke-width="2"/>
+<text x="308" y="979.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="324" y="981" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">webhook dispara o CI</text>
+<circle cx="560" cy="976" r="10" fill="#1D4ED8" stroke="#fff" stroke-width="2"/>
+<text x="560" y="979.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="576" y="981" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">build Maven (JDK 21)</text>
+<circle cx="812" cy="976" r="10" fill="#1D4ED8" stroke="#fff" stroke-width="2"/>
+<text x="812" y="979.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+<text x="828" y="981" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">testes automatizados</text>
+<circle cx="1064" cy="976" r="10" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="1064" y="979.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">5</text>
+<text x="1080" y="981" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">artefato drop/app.jar publicado</text>
+<circle cx="1316" cy="976" r="10" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="1316" y="979.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">6</text>
+<text x="1332" y="981" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">novo artefato dispara o CD</text>
+<circle cx="56" cy="1002" r="10" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="56" y="1005.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">7</text>
+<text x="72" y="1007" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">App Settings com os segredos</text>
+<circle cx="308" cy="1002" r="10" fill="#0E7C3A" stroke="#fff" stroke-width="2"/>
+<text x="308" y="1005.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">8</text>
+<text x="324" y="1007" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">deploy no Azure Web App</text>
+<circle cx="560" cy="1002" r="10" fill="#3949AB" stroke="#fff" stroke-width="2"/>
+<text x="560" y="1005.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">9</text>
+<text x="576" y="1007" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">Flyway prepara o Azure SQL</text>
+<circle cx="812" cy="1002" r="10" fill="#0078D4" stroke="#fff" stroke-width="2"/>
+<text x="812" y="1005.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">10</text>
+<text x="828" y="1007" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">usuário acessa via HTTPS</text>
+<circle cx="1064" cy="1002" r="10" fill="#3949AB" stroke="#fff" stroke-width="2"/>
+<text x="1064" y="1005.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">11</text>
+<text x="1080" y="1007" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">API grava no Azure SQL</text>
+<circle cx="1316" cy="1002" r="10" fill="#3949AB" stroke="#fff" stroke-width="2"/>
+<text x="1316" y="1005.885" font-size="10.5" font-weight="800" fill="#fff" text-anchor="middle">12</text>
+<text x="1332" y="1007" font-size="12.5" font-weight="400" fill="#1F2937" text-anchor="start">SELECT comprova a persistência</text>
+</svg>

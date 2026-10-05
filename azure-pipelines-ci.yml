@@ -1,0 +1,112 @@
+# =====================================================================
+# CI - CLYVO Predict (Sprint 4 - DevOps Tools & Cloud Computing)
+#
+# Dispara a cada alteracao na branch master do GitHub e executa:
+#   build (Maven/JDK 21) -> testes automatizados (JUnit 5 + Mockito)
+#   -> publicacao dos resultados dos testes -> empacotamento do JAR
+#   -> publicacao do artefato "drop" no Azure DevOps.
+#
+# O CD (azure-pipelines-cd.yml) dispara sozinho quando este CI publica
+# um novo artefato.
+#
+# Nome da pipeline no Azure DevOps: CI-clyvo-predict
+# =====================================================================
+
+name: CI-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - master
+
+pr: none
+
+# Agente: Microsoft-hosted (padrao). Sem paralelismo hospedado na organizacao,
+# use o agente proprio criado por scripts/azure-agente-vm.sh trocando
+# "vmImage: ubuntu-24.04" por "name: Default" (veja o README, plano B).
+pool:
+  vmImage: ubuntu-24.04
+
+variables:
+  MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
+  MAVEN_OPTS: -Dmaven.repo.local=$(Pipeline.Workspace)/.m2/repository
+
+stages:
+  - stage: CI
+    displayName: 'CI - Build, testes e artefato'
+    jobs:
+      - job: BuildTestePublicacao
+        displayName: 'Build + Testes + Artefato'
+        steps:
+          - checkout: self
+            displayName: '1. Checkout do codigo (GitHub - master)'
+
+          - bash: |
+              set -euo pipefail
+              JDK21="${JAVA_HOME_21_X64:-}"
+              if [ -z "$JDK21" ]; then JDK21=$(ls -d /usr/lib/jvm/java-21-openjdk-* 2>/dev/null | head -1 || true); fi
+              if [ -z "$JDK21" ] || [ ! -x "$JDK21/bin/java" ]; then
+                echo "##vso[task.logissue type=error]JDK 21 nao encontrado no agente."
+                exit 1
+              fi
+              echo "##vso[task.setvariable variable=JAVA_HOME]$JDK21"
+              echo "##vso[task.prependpath]$JDK21/bin"
+              "$JDK21/bin/java" -version
+              mvn -version
+            displayName: '2. Configurar JDK 21 e Maven'
+
+          - task: Cache@2
+            displayName: '3. Cache das dependencias Maven'
+            inputs:
+              key: 'maven | "$(Agent.OS)" | pom.xml'
+              restoreKeys: |
+                maven | "$(Agent.OS)"
+              path: $(MAVEN_CACHE_FOLDER)
+
+          - task: DownloadSecureFile@1
+            name: chaveJwt
+            displayName: '4. Baixar a chave privada do JWT (Secure File protegido)'
+            inputs:
+              secureFile: 'private_key.pem'
+
+          - bash: |
+              set -euo pipefail
+              cp "$(chaveJwt.secureFilePath)" src/main/resources/keys/private_key.pem
+              PUB_DA_PRIVADA=$(openssl pkey -in src/main/resources/keys/private_key.pem -pubout)
+              PUB_DO_REPO=$(openssl pkey -pubin -in src/main/resources/keys/public_key.pem -pubout)
+              if [ "$PUB_DA_PRIVADA" != "$PUB_DO_REPO" ]; then
+                echo "##vso[task.logissue type=error]A chave privada do Secure File nao corresponde a src/main/resources/keys/public_key.pem."
+                exit 1
+              fi
+              echo "Chave JWT instalada no build e conferida com a chave publica do repositorio."
+            displayName: '5. Instalar e validar a chave JWT'
+
+          - bash: mvn -B -ntp clean compile
+            displayName: '6. Build - compilacao Maven'
+
+          - bash: mvn -B -ntp test
+            displayName: '7. Testes automatizados (JUnit 5 + Mockito)'
+
+          - task: PublishTestResults@2
+            displayName: '8. Publicar resultados dos testes'
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              testRunTitle: 'Testes CLYVO Predict - $(Build.BuildNumber)'
+              failTaskOnFailedTests: true
+
+          - bash: |
+              set -euo pipefail
+              mvn -B -ntp package -DskipTests
+              cp target/*.jar "$(Build.ArtifactStagingDirectory)/app.jar"
+              echo "Artefato gerado:"
+              ls -lh "$(Build.ArtifactStagingDirectory)"
+            displayName: '9. Empacotar a aplicacao (JAR)'
+
+          - task: PublishPipelineArtifact@1
+            displayName: '10. Publicar o artefato no Azure DevOps (drop/app.jar)'
+            inputs:
+              targetPath: '$(Build.ArtifactStagingDirectory)'
+              artifact: 'drop'
+              publishLocation: 'pipeline'

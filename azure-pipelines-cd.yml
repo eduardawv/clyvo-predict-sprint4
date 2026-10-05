@@ -1,0 +1,97 @@
+# =====================================================================
+# CD - CLYVO Predict (Sprint 4 - DevOps Tools & Cloud Computing)
+#
+# Dispara automaticamente quando a pipeline CI-clyvo-predict termina
+# com sucesso na branch master, ou seja, quando um NOVO ARTEFATO e gerado.
+# Nao dispara por commit (trigger: none): quem dispara e o artefato do CI.
+#
+#   baixa o artefato drop/app.jar -> aplica as variaveis de ambiente do
+#   Web App a partir do grupo de variaveis protegido (Library) -> faz o
+#   deploy no Azure Web App -> confere se a API subiu (teste de fumaca).
+#
+# Nome da pipeline no Azure DevOps: CD-clyvo-predict
+# Service connection: sc-azure-clyvo | Variable group: clyvo-sprint4
+# =====================================================================
+
+name: CD-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: none
+pr: none
+
+resources:
+  pipelines:
+    - pipeline: ci
+      source: 'CI-clyvo-predict'
+      trigger:
+        branches:
+          include:
+            - master
+
+variables:
+  - group: clyvo-sprint4
+
+# Mesmo agente do CI: troque "vmImage: ubuntu-24.04" por "name: Default"
+# se estiver usando o agente proprio (README, plano B).
+pool:
+  vmImage: ubuntu-24.04
+
+stages:
+  - stage: CD
+    displayName: 'CD - Deploy no Azure Web App'
+    jobs:
+      - job: Deploy
+        displayName: 'Deploy + verificacao'
+        steps:
+          - checkout: none
+
+          - download: ci
+            artifact: drop
+            displayName: '1. Baixar o artefato gerado pelo CI'
+
+          - bash: |
+              echo "Artefato vindo do CI: $(resources.pipeline.ci.runName)"
+              echo "Branch: $(resources.pipeline.ci.sourceBranch)"
+              echo "Commit: $(resources.pipeline.ci.sourceCommit)"
+              ls -lh "$(Pipeline.Workspace)/ci/drop"
+            displayName: '2. Conferir o artefato recebido'
+
+          - task: AzureAppServiceSettings@1
+            displayName: '3. Variaveis de ambiente do Web App (segredos do Library)'
+            inputs:
+              azureSubscription: 'sc-azure-clyvo'
+              appName: '$(WEB_APP_NAME)'
+              resourceGroupName: '$(RESOURCE_GROUP)'
+              appSettings: |
+                [
+                  { "name": "SPRING_PROFILES_ACTIVE", "value": "azure", "slotSetting": false },
+                  { "name": "SPRING_DATASOURCE_URL", "value": "$(DB_URL)", "slotSetting": false },
+                  { "name": "SPRING_DATASOURCE_USERNAME", "value": "$(DB_USER)", "slotSetting": false },
+                  { "name": "SPRING_DATASOURCE_PASSWORD", "value": "$(DB_PASSWORD)", "slotSetting": false },
+                  { "name": "WEBSITES_CONTAINER_START_TIME_LIMIT", "value": "600", "slotSetting": false }
+                ]
+
+          - task: AzureWebApp@1
+            displayName: '4. Deploy do JAR no Azure Web App'
+            inputs:
+              azureSubscription: 'sc-azure-clyvo'
+              appType: 'webAppLinux'
+              appName: '$(WEB_APP_NAME)'
+              package: '$(Pipeline.Workspace)/ci/drop/app.jar'
+
+          - bash: |
+              set -uo pipefail
+              URL="https://$(WEB_APP_NAME).azurewebsites.net"
+              for tentativa in $(seq 1 40); do
+                codigo=$(curl -s -o /tmp/api-docs.json -w "%{http_code}" --max-time 20 "$URL/v3/api-docs" || true)
+                if [ "$codigo" = "200" ]; then
+                  echo "API no ar: $URL (HTTP 200)"
+                  python3 -c "import json; i = json.load(open('/tmp/api-docs.json'))['info']; print('Versao publicada no Swagger:', i.get('title'), '-', i.get('version'))"
+                  echo "Swagger: $URL/swagger-ui.html"
+                  exit 0
+                fi
+                echo "Tentativa $tentativa: HTTP ${codigo:-sem resposta}. Aguardando a aplicacao iniciar..."
+                sleep 15
+              done
+              echo "##vso[task.logissue type=error]A API nao respondeu HTTP 200 em 10 minutos. Veja o Log stream do Web App no portal."
+              exit 1
+            displayName: '5. Teste de fumaca (API respondendo no Azure)'
