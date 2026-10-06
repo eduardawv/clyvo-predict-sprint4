@@ -5,7 +5,7 @@
 | Entrega | Link |
 |---|---|
 | Repositório GitHub | https://github.com/eduardawv/clyvo-predict-sprint4 |
-| Projeto no Azure DevOps | https://dev.azure.com/INSERIR_ORGANIZACAO/Sprint%204%20%E2%80%93%20Azure%20DevOps |
+| Projeto no Azure DevOps | [https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps](https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps) |
 | Vídeo (YouTube) | https://www.youtube.com/watch?v=INSERIR_LINK |
 
 | Nome completo | RM | Turma |
@@ -13,8 +13,8 @@
 | Camily Vitoria Pereira Maciel | RM566520 | 2TDSPX |
 | Eduarda Weiss Ventura | RM564434 | 2TDSPX |
 | Lucas Nunes Soares | RM566503 | 2TDSPX |
-| Maria Gabriela Landim Severo | RM565146 | 2TDSPX |
-| Samara Porto Souza | RM559072 | 2TDSPX |
+| Maria Gabriela Landim Severo | RM565146 | 2TDSR |
+| Samara Porto Souza | RM559072 | 2TDSR |
 
 ---
 
