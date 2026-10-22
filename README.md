@@ -5,7 +5,8 @@
 | Entrega | Link |
 |---|---|
 | Repositório GitHub | https://github.com/eduardawv/clyvo-predict-sprint4 |
-| Projeto no Azure DevOps | [https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps](https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps) |
+| Projeto no Azure DevOps | https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps |
+| Repositório no Azure Repos (origem das pipelines) | https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps/_git/clyvo-predict-sprint4 |
 | Vídeo (YouTube) | https://www.youtube.com/watch?v=INSERIR_LINK |
 
 | Nome completo | RM | Turma |
@@ -13,8 +14,8 @@
 | Camily Vitoria Pereira Maciel | RM566520 | 2TDSPX |
 | Eduarda Weiss Ventura | RM564434 | 2TDSPX |
 | Lucas Nunes Soares | RM566503 | 2TDSPX |
-| Maria Gabriela Landim Severo | RM565146 | 2TDSR |
-| Samara Porto Souza | RM559072 | 2TDSR |
+| Maria Gabriela Landim Severo | RM565146 | 2TDSPX |
+| Samara Porto Souza | RM559072 | 2TDSPX |
 
 ---
 
@@ -22,9 +23,10 @@
 
 O **CLYVO Predict** é a API da nossa solução de saúde preventiva para pets, desenvolvida no Challenge FIAP 2026 com a healthtech veterinária Clyvo. A API centraliza **tutores**, **pets**, **veterinários** e **eventos de saúde** (vacinas, consultas, doenças) e calcula para cada pet um **Health Score** de 0 a 100, que sobe com cuidados preventivos e cai com doenças e acidentes. O objetivo é tirar a jornada do pet do modo reativo, só emergência, e dar à clínica um histórico contínuo do paciente.
 
-Nesta sprint, o código Java da Sprint 4 passa a ser entregue por uma esteira **CI/CD no Azure DevOps**:
-1. Cada alteração na branch `master` dispara o build, os testes automatizados e a publicação do artefato.
-2. Cada novo artefato dispara o deploy no **Azure Web App**, com o banco **Azure SQL Database (PaaS)**.
+Nesta sprint, o código Java da Sprint 4 passa a ser entregue por uma esteira **CI/CD no Azure DevOps**, com o ciclo completo de vida de cada alteração:
+1. A alteração nasce de uma tarefa no **Azure Boards**, é feita numa branch do **Azure Repos** e entra na `master` por **pull request aprovado**.
+2. O merge na `master` dispara o build, os testes automatizados e a publicação do artefato.
+3. Cada novo artefato dispara o deploy no **Azure Web App**, com o banco **Azure SQL Database (PaaS)**.
 
 ### Stack
 
@@ -35,7 +37,8 @@ Nesta sprint, o código Java da Sprint 4 passa a ser entregue por uma esteira **
 | Documentação da API | SpringDoc OpenAPI (Swagger UI) |
 | Banco de dados | Azure SQL Database (PaaS), driver `mssql-jdbc`, migrations com Flyway |
 | Build e testes | Maven, JUnit 5, Mockito, Hibernate Validator |
-| Código-fonte | GitHub (branch `master`) |
+| Código-fonte | Azure Repos (Git, branch `master` protegida por pull request), importado do GitHub |
+| Gestão do trabalho | Azure Boards (processo Scrum): cada alteração é uma tarefa vinculada à branch, ao commit e ao pull request |
 | CI/CD | Azure DevOps: Azure Pipelines (YAML) e Library (grupo de variáveis e secure file) |
 | Hospedagem | Azure App Service: Web App Linux, Java SE 21, plano B1 |
 | Infraestrutura | Azure CLI (scripts na pasta `scripts/`) |
@@ -46,21 +49,22 @@ Nesta sprint, o código Java da Sprint 4 passa a ser entregue por uma esteira **
 
 | # | Etapa | Onde acontece |
 |---|---|---|
-| 1 | O desenvolvedor faz commit e push na branch `master` | IDE + Git → GitHub |
-| 2 | O webhook do GitHub dispara a pipeline **CI** | GitHub → Azure Pipelines |
-| 3 | Build com Maven e JDK 21; a chave JWT vem do Secure File | Pipeline CI |
-| 4 | Testes automatizados (JUnit 5 + Mockito), com resultados publicados na aba *Tests* | Pipeline CI |
-| 5 | Publicação do artefato `drop/app.jar` no Azure DevOps | Pipeline CI |
-| 6 | O novo artefato dispara a pipeline **CD** | Azure Pipelines |
-| 7 | O CD grava as variáveis de ambiente do Web App com os segredos do Library | Pipeline CD → Azure (service connection) |
-| 8 | Deploy do JAR no Azure Web App e teste de fumaça (API responde 200) | Pipeline CD → Web App |
+| 1 | O desenvolvedor cria a tarefa no Azure Boards e, a partir dela, a branch de trabalho | Azure Boards → Azure Repos |
+| 2 | Altera o código na branch e faz o commit vinculado à tarefa | Azure Repos (editor web ou IDE + Git) |
+| 3 | Abre o pull request para a `master`. A política exige 1 aprovação, tarefa vinculada e comentários resolvidos. Aprovado, o merge fecha a tarefa | Azure Repos (Branch policies) → Azure Boards |
+| 4 | O merge na `master` dispara a pipeline **CI** | Azure Repos → Azure Pipelines |
+| 5 | Build com Maven e JDK 21 (chave JWT do Secure File) e testes automatizados (JUnit 5 + Mockito), com resultados na aba *Tests* | Pipeline CI |
+| 6 | Publicação do artefato `drop/app.jar` no Azure DevOps | Pipeline CI |
+| 7 | O novo artefato dispara a pipeline **CD** | Azure Pipelines |
+| 8 | O CD grava as variáveis de ambiente do Web App com os segredos do Library, faz o deploy do JAR e o teste de fumaça (API responde 200) | Pipeline CD → Azure (service connection) → Web App |
 | 9 | Na subida da aplicação, o Flyway cria ou atualiza as tabelas | Web App → Azure SQL |
 | 10 | O usuário final acessa a API por HTTPS, com token JWT | Usuário → Web App |
 | 11 | A API grava e lê no Azure SQL (JDBC criptografado, porta 1433) | Web App → Azure SQL |
 | 12 | A equipe comprova cada operação com SELECT no banco | Terminal (sqlcmd) → Azure SQL |
 
 **Personas:**
-- **Desenvolvedor:** altera o código e faz push.
+- **Desenvolvedor:** cria a tarefa, a branch, o commit e o pull request.
+- **Revisor:** aprova o pull request e faz o merge na `master` (a política permite que o autor aprove a própria alteração).
 - **Usuário final:** tutor ou clínica que usa a API.
 - **Professor:** acompanha o projeto com acesso *Basic*.
 - **Equipe:** comprova a persistência no banco.
@@ -101,6 +105,16 @@ RM565146 - Maria Gabriela Landim Severo - 2TDSPX
 RM559072 - Samara Porto Souza - 2TDSPX
 ```
 
+### 4.1 Azure Boards e Azure Repos
+
+| Item | Configuração |
+|---|---|
+| Repositório | `clyvo-predict-sprint4` no Azure Repos, importado de https://github.com/eduardawv/clyvo-predict-sprint4 |
+| Branch padrão | `master` |
+| Políticas da `master` | mínimo de 1 revisor (o autor pode aprovar), tarefa vinculada obrigatória, comentários resolvidos obrigatórios e revisor incluído automaticamente |
+| Fluxo de cada alteração | tarefa (Boards) → branch → commit vinculado → pull request → aprovação → merge na `master` (a tarefa vai para *Done*) |
+| GitHub | cópia pública do código para a entrega; recebe a `master` do Azure Repos depois de cada merge |
+
 ## 5. Acesso do professor
 
 O professor foi convidado em *Organization settings > Users*, com nível de acesso **Basic** e adicionado ao projeto `Sprint 4 – Azure DevOps`.
@@ -111,14 +125,14 @@ A organização gratuita permite **5 usuários Basic**: o professor ocupa um del
 
 | Pipeline | Arquivo | Disparo |
 |---|---|---|
-| `CI-clyvo-predict` | [`azure-pipelines-ci.yml`](azure-pipelines-ci.yml) | toda alteração na branch `master` |
+| `CI-clyvo-predict` | [`azure-pipelines-ci.yml`](azure-pipelines-ci.yml) | toda alteração na branch `master` (merge de pull request) |
 | `CD-clyvo-predict` | [`azure-pipelines-cd.yml`](azure-pipelines-cd.yml) | conclusão do CI com novo artefato (`resources.pipelines`) |
 
 ### 6.1 CI: build, testes e artefato
 
 | Passo | O que faz |
 |---|---|
-| 1. Checkout | Baixa o código do GitHub (branch `master`) |
+| 1. Checkout | Baixa o código do Azure Repos (branch `master`, commit do merge) |
 | 2. JDK 21 e Maven | Seleciona o JDK 21 do agente e mostra as versões |
 | 3. Cache Maven | Reaproveita as dependências entre execuções |
 | 4. Secure File | Baixa `private_key.pem` (chave privada do JWT) do Library |
@@ -157,8 +171,8 @@ Os valores secretos aparecem como `***` nos logs. No Web App, eles viram *App Se
 
 | Regra | Como foi atendida |
 |---|---|
-| I. Pipeline conectada ao repositório | As duas pipelines leem o YAML do repositório GitHub (app Azure Pipelines) |
-| II. CI dispara a cada alteração na `master` | `trigger: branches: include: master` |
+| I. Pipeline conectada ao repositório | As duas pipelines leem o YAML do repositório `clyvo-predict-sprint4` no Azure Repos |
+| II. CI dispara a cada alteração na `master` | `trigger: branches: include: master`; como a `master` é protegida, toda alteração chega por merge de pull request |
 | III. CD dispara após novo artefato | `resources.pipelines` com `trigger` no CI `CI-clyvo-predict` |
 | IV. Variáveis sensíveis protegidas | Grupo de variáveis com segredos, Secure File e service connection |
 | V. Artefato publicado no Azure DevOps | `PublishPipelineArtifact@1` → `drop/app.jar` |
@@ -193,10 +207,13 @@ Feche e reabra o Git Bash. Não é preciso JDK nem Maven na máquina: o build ro
 
 ### 8.2 Repositório
 
+O código está no GitHub e foi importado para o Azure Repos, que é a origem das pipelines. Para trabalhar localmente com os dois:
+
 ```bash
 mkdir -p /c/dev && cd /c/dev
 git clone https://github.com/eduardawv/clyvo-predict-sprint4.git
 cd clyvo-predict-sprint4
+git remote add azure "URL copiada em Repos > Clone"
 ```
 
 As chaves do JWT são geradas uma única vez com `bash scripts/gerar-chave-jwt.sh`:
@@ -218,17 +235,28 @@ O script:
 ### 8.4 Azure DevOps
 
 1. **Projeto** com os dados da seção 4. Convide o professor com acesso Basic (seção 5).
-2. **Service connection:** *Project settings > Service connections > New > Azure Resource Manager*.
+2. **Azure Repos:** *Repos > Import a repository* (Git, URL do GitHub, sem autenticação). Renomeie o repositório para `clyvo-predict-sprint4` em *Project settings > Repositories*.
+3. **Políticas da `master`:** *Repos > Branches > master > ⋮ > Branch policies*, com as regras da seção 4.1.
+4. **Service connection:** *Project settings > Service connections > New > Azure Resource Manager*.
    - Escolha *Workload identity federation (automatic)*, a assinatura e o resource group `rg-clyvo-sprint4`.
    - Dê o nome `sc-azure-clyvo` e marque *Grant access permission to all pipelines*.
-3. **Library > + Variable group** `clyvo-sprint4`:
+5. **Library > + Variable group** `clyvo-sprint4`:
    - cadastre as variáveis da seção 6.3, com o cadeado em `DB_USER` e `DB_PASSWORD`;
    - em *Pipeline permissions*, libere o acesso para as pipelines.
-4. **Library > Secure files > + Secure file:** envie `.keys/private_key.pem` com esse mesmo nome e libere o acesso às pipelines.
-5. **Pipelines > New pipeline > GitHub > este repositório > Existing Azure Pipelines YAML file:**
+6. **Library > Secure files > + Secure file:** envie `.keys/private_key.pem` com esse mesmo nome e libere o acesso às pipelines.
+7. **Pipelines > New pipeline > Azure Repos Git > `clyvo-predict-sprint4` > Existing Azure Pipelines YAML file:**
    - escolha `/azure-pipelines-ci.yml`, clique em **Save** e renomeie para `CI-clyvo-predict`;
    - repita com `/azure-pipelines-cd.yml` e renomeie para `CD-clyvo-predict`.
-6. Rode o CI uma vez (*Run pipeline*). Ao terminar, o CD dispara sozinho.
+8. **Ciclo de uma alteração:**
+   - *Boards > Work items > New Work Item > Task* e, na tarefa, *Create a branch* a partir da `master`;
+   - altere o código na branch e faça o commit vinculando a tarefa;
+   - *Repos > Pull requests > Create a pull request* para a `master`, com a tarefa vinculada;
+   - **Approve** e **Complete** (merge, com *Complete associated work items after merging*).
+   O merge dispara o CI e o novo artefato dispara o CD.
+9. **Sincronize o GitHub** depois de cada merge:
+   ```bash
+   git checkout master && git pull azure master && git push origin master
+   ```
 
 ### 8.5 Plano B: agente próprio (sem paralelismo hospedado)
 
@@ -236,10 +264,10 @@ Organizações novas só recebem o agente gratuito da Microsoft depois de vincul
 
 ```bash
 bash scripts/azure-agente-vm.sh        # pede a URL da organização e um PAT (Agent Pools: Read & manage)
+git fetch azure && git checkout -b ci/agente-proprio azure/master
 sed -i 's/^  vmImage: ubuntu-24.04$/  name: Default/' azure-pipelines-ci.yml azure-pipelines-cd.yml
-git add azure-pipelines-ci.yml azure-pipelines-cd.yml
-git commit -m "ci: usa agente proprio (pool Default)"
-git push
+git commit -am "ci: usa agente proprio (pool Default)"
+git push -u azure ci/agente-proprio    # depois abra o pull request para a master
 ```
 
 ## 9. CRUD e evidências no banco
@@ -274,6 +302,8 @@ No final do roteiro ficam 2 linhas com conteúdo em cada tabela: Ana e Bruno em 
 | Terminal do banco cita firewall/IP | `bash scripts/azure-liberar-ip.sh` |
 | Região recusa o Azure SQL | O `azure-infra.sh` tenta sozinho as regiões permitidas pela policy da FIAP |
 | `Permission denied` no Git | Repositório dentro do OneDrive: use `C:\dev` |
+| `TF402455: Pushes to this branch are not permitted` | A `master` é protegida: faça a alteração numa branch e abra pull request |
+| Pull request não deixa completar | Vincule a tarefa do Boards, aprove e resolva os comentários abertos |
 
 ## 11. Estrutura do repositório
 
