@@ -1,7 +1,9 @@
 # =====================================================================
 # CI - CLYVO Predict (Sprint 4 - DevOps Tools & Cloud Computing)
 #
-# Dispara a cada alteracao na branch master do GitHub e executa:
+# Fonte: Azure Repos (repositorio clyvo-predict-sprint4, importado do GitHub).
+# A branch master e protegida por politica: toda alteracao entra por
+# pull request aprovado. O merge do PR na master dispara este CI, que executa:
 #   build (Maven/JDK 21) -> testes automatizados (JUnit 5 + Mockito)
 #   -> publicacao dos resultados dos testes -> empacotamento do JAR
 #   -> publicacao do artefato "drop" no Azure DevOps.
@@ -39,7 +41,7 @@ stages:
         displayName: 'Build + Testes + Artefato'
         steps:
           - checkout: self
-            displayName: '1. Checkout do codigo (GitHub - master)'
+            displayName: '1. Checkout do codigo (Azure Repos - master)'
 
           - bash: |
               set -euo pipefail
