@@ -7,15 +7,15 @@
 | Repositório GitHub | https://github.com/eduardawv/clyvo-predict-sprint4 |
 | Projeto no Azure DevOps | https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps |
 | Repositório no Azure Repos (origem das pipelines) | https://dev.azure.com/2TDSPX-EDUARDA/Sprint%204%20%E2%80%93%20Azure%20DevOps/_git/clyvo-predict-sprint4 |
-| Vídeo (YouTube) | https://www.youtube.com/watch?v=INSERIR_LINK |
+| Vídeo (YouTube) | https://www.youtube.com/watch?v=XXVH-J5m-Js |
 
 | Nome completo | RM | Turma |
 |---|---|---|
 | Camily Vitoria Pereira Maciel | RM566520 | 2TDSPX |
 | Eduarda Weiss Ventura | RM564434 | 2TDSPX |
 | Lucas Nunes Soares | RM566503 | 2TDSPX |
-| Maria Gabriela Landim Severo | RM565146 | 2TDSPX |
-| Samara Porto Souza | RM559072 | 2TDSPX |
+| Maria Gabriela Landim Severo | RM565146 | 2TDSR |
+| Samara Porto Souza | RM559072 | 2TDSR |
 
 ---
 
@@ -101,8 +101,8 @@ Projeto para entrega da Sprint 4 do professor João Menk
 RM564434 - Eduarda Weiss Ventura - 2TDSPX
 RM566520 - Camily Vitoria Pereira Maciel - 2TDSPX
 RM566503 - Lucas Nunes Soares - 2TDSPX
-RM565146 - Maria Gabriela Landim Severo - 2TDSPX
-RM559072 - Samara Porto Souza - 2TDSPX
+RM565146 - Maria Gabriela Landim Severo - 2TDSR
+RM559072 - Samara Porto Souza - 2TDSR
 ```
 
 ### 4.1 Azure Boards e Azure Repos
